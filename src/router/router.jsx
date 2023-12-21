@@ -18,6 +18,7 @@ import Register from "../pages/Register/Register";
 import EditTask from "../pages/EditTask/EditTask";
 import OnGoingTask from "../pages/OnGoingTask/OnGoingTask";
 import CompleteTask from "../pages/CompleteTask/CompleteTask";
+import PrivateRoute from "./PrivateRoute";
 
 
 const router = createBrowserRouter([
@@ -49,7 +50,9 @@ const router = createBrowserRouter([
     },
     {
         path: "/dashboard",
-        element: <DashboardLayout></DashboardLayout>,
+        element: <PrivateRoute>
+            <DashboardLayout></DashboardLayout>
+        </PrivateRoute>,
         children: [
             {
                 path: "profile",
