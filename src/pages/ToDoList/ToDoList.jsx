@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 
 const ToDoList = () => {
@@ -20,6 +21,8 @@ const ToDoList = () => {
 
     // console.log(toDoTasks);
 
+    //delete task
+
     const handleDeleteTask = (id) => {
         Swal.fire({
             title: "Are you sure?",
@@ -34,7 +37,7 @@ const ToDoList = () => {
 
                 axios.delete(`http://localhost:5000/tasks/${id}`)
                     .then(res => {
-                        if(res.data.deletedCount >0){
+                        if (res.data.deletedCount > 0) {
                             Swal.fire({
                                 title: "Deleted!",
                                 text: "Your file has been deleted.",
@@ -46,13 +49,11 @@ const ToDoList = () => {
                     })
                     .catch(error => {
                         console.log(error);
-                    }) 
+                    })
             }
         });
 
     }
-
-
 
 
     return (
@@ -74,12 +75,15 @@ const ToDoList = () => {
                                     <p>{task.description}</p>
                                     <p>{task.deadlines}</p>
                                     <div className="card-actions justify-start">
-                                        <div className="badge badge-outline">ongoing</div>
-                                        <div className="badge badge-outline">completed</div>
-                                        <div className="badge badge-outline">edit</div>
+                                        <div className="badge badge-outline cursor-pointer">ongoing</div>
+                                        <div className="badge badge-outline cursor-pointer">completed</div>
+                                        <Link to={`/dashboard/edit-task/${task._id}`}>
+                                            <div className="badge badge-outline cursor-pointer">edit</div>
+                                        </Link>
+
                                         <div
                                             onClick={() => handleDeleteTask(task._id)}
-                                            className="badge badge-outline">delete</div>
+                                            className="badge badge-outline cursor-pointer">delete</div>
                                     </div>
                                 </div>
                             </div>

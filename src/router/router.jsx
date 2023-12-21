@@ -1,6 +1,6 @@
 import {
     createBrowserRouter,
-  } from "react-router-dom";
+} from "react-router-dom";
 import MainLayout from "../layout/MainLayout";
 import Home from "../pages/Home/Home";
 import Features from "../pages/Features/Features";
@@ -15,34 +15,35 @@ import CompletedList from "../pages/CompletedList/CompletedList";
 import DashboardLayout from "../layout/DashboardLayout";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
+import EditTask from "../pages/EditTask/EditTask";
 
 
 const router = createBrowserRouter([
     {
-      path: "/",
-      element: <MainLayout></MainLayout>,
-      children: [
-        {
-            path: "/",
-            element: <Home></Home>
-        },
-        {
-            path: "/features",
-            element: <Features></Features>
-        },
-        {
-            path: "/contact",
-            element: <ContactUs></ContactUs>
-        },
-        {
-            path: "/login",
-            element: <Login></Login>
-        },
-        {
-            path: "/register",
-            element: <Register></Register>
-        }
-      ]
+        path: "/",
+        element: <MainLayout></MainLayout>,
+        children: [
+            {
+                path: "/",
+                element: <Home></Home>
+            },
+            {
+                path: "/features",
+                element: <Features></Features>
+            },
+            {
+                path: "/contact",
+                element: <ContactUs></ContactUs>
+            },
+            {
+                path: "/login",
+                element: <Login></Login>
+            },
+            {
+                path: "/register",
+                element: <Register></Register>
+            }
+        ]
     },
     {
         path: "/dashboard",
@@ -71,9 +72,13 @@ const router = createBrowserRouter([
             {
                 path: "completed-list",
                 element: <CompletedList></CompletedList>
+            },
+            {
+                path: "edit-task/:id",
+                element: <EditTask></EditTask>
             }
         ]
     },
-  ]);
+]);
 
 export default router;
