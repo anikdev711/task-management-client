@@ -58,7 +58,7 @@ const ToDoList = () => {
 
     return (
         <div>
-            <h1 className="text-center font-bold text-2xl">Create Task</h1>
+            <h1 className="text-center font-bold text-2xl">To do list</h1>
             <br />
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-5 mx-auto">
@@ -75,8 +75,14 @@ const ToDoList = () => {
                                     <p>{task.description}</p>
                                     <p>{task.deadlines}</p>
                                     <div className="card-actions justify-start">
-                                        <div className="badge badge-outline cursor-pointer">ongoing</div>
-                                        <div className="badge badge-outline cursor-pointer">completed</div>
+                                        <Link to={`/dashboard/ongoing-task/${task._id}`}>
+                                            <div className="badge badge-outline cursor-pointer">ongoing</div>
+                                        </Link>
+
+                                        <Link to={`/dashboard/complete-task/${task._id}`}>
+                                            <div className="badge badge-outline cursor-pointer">completed</div>
+                                        </Link>
+
                                         <Link to={`/dashboard/edit-task/${task._id}`}>
                                             <div className="badge badge-outline cursor-pointer">edit</div>
                                         </Link>

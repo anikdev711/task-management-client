@@ -1,11 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-// import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 
 
-const EditTask = () => {
+const CompleteTask = () => {
     const [editTask, setEditTask] = useState({});
     const { id } = useParams();
     console.log(id);
@@ -28,8 +27,6 @@ const EditTask = () => {
     // } = useForm();
 
     const handleEditTask = (event) => {
-        
-
         event.preventDefault();
 
         const form = event.target;
@@ -39,7 +36,13 @@ const EditTask = () => {
         const priority = form.priority.value;
         const title = form.title.value;
 
-        
+        // const taskInfo = {
+        //     email: data.email,
+        //     deadlines: data.deadlines,
+        //     description: data.description,
+        //     priority: data.priority,
+        //     title: data.title
+        // }
         const taskInfo = {
             email,
             deadlines,
@@ -48,12 +51,14 @@ const EditTask = () => {
             title
         }
 
-        axios.put(`http://localhost:5000/tasks/${id}`, taskInfo)
+
+
+        axios.post('http://localhost:5000/completetasks', taskInfo)
             .then(res => {
                 console.log(res);
-                if (res.data.modifiedCount > 0) {
+                if (res.data.insertedId) {
                     Swal.fire({
-                        title: "Tasks edited",
+                        title: "Task completed",
                         showClass: {
                             popup: `
                                         animate__animated
@@ -76,11 +81,9 @@ const EditTask = () => {
             })
 
     }
-
     return (
         <div>
-
-            <h1 className="text-center font-bold text-2xl">Edit Task</h1>
+            <h1 className="text-center font-bold text-2xl">Complete Task</h1>
             <br />
             <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                 <form
@@ -92,11 +95,11 @@ const EditTask = () => {
                             <span className="label-text">Email*</span>
                         </label>
                         <input
+                            defaultValue={editTask.email}
                             type="email"
                             name="email"
-                            defaultValue={editTask.email}
                             placeholder="Your email address..."
-                            className="input input-bordered" required/>
+                            className="input input-bordered" />
                         {/* {errors.email && <span className="text-red-500 font-bold">This field is necessary</span>} */}
                     </div>
 
@@ -105,11 +108,11 @@ const EditTask = () => {
                             <span className="label-text">Title*</span>
                         </label>
                         <input
+                            defaultValue={editTask.title}
                             type="text"
                             name="title"
-                            defaultValue={editTask.title}
                             placeholder="Task title..."
-                            className="input input-bordered" required/>
+                            className="input input-bordered" />
                         {/* {errors.title && <span className="text-red-500 font-bold">This field is necessary</span>} */}
                     </div>
                     <div className="form-control">
@@ -117,11 +120,11 @@ const EditTask = () => {
                             <span className="label-text">Description*</span>
                         </label>
                         <input
+                            defaultValue={editTask.description}
                             type="text"
                             name="description"
-                            defaultValue={editTask.description}
                             placeholder="Task description..."
-                            className="input input-bordered" required/>
+                            className="input input-bordered" />
                         {/* {errors.description && <span className="text-red-500 font-bold">This field is necessary</span>} */}
                     </div>
 
@@ -130,11 +133,11 @@ const EditTask = () => {
                             <span className="label-text">Deadlines*</span>
                         </label>
                         <input
+                            defaultValue={editTask.deadlines}
                             type="text"
                             name="deadlines"
-                            defaultValue={editTask.deadlines}
                             placeholder="Task deadlines..."
-                            className="input input-bordered" required/>
+                            className="input input-bordered" />
                         {/* {errors.deadlines && <span className="text-red-500 font-bold">This field is necessary</span>} */}
                     </div>
 
@@ -143,10 +146,12 @@ const EditTask = () => {
                         <label className="label">
                             <span className="label-text font-semibold text-lg">Priority*:</span>
                         </label>
-                        <select name="priority" required>
-                            <option value="low">low</option>
+                        <select name="priority">
+
+                            <option value={editTask.priority}>{editTask.priority}</option>
+                            {/* <option value="low">low</option>
                             <option value="moderate">moderate</option>
-                            <option value="high">high</option>
+                            <option value="high">high</option> */}
                         </select>
                         {/* {errors.priority && <span className="text-red-500 font-bold">This field is necessary</span>} */}
                     </div>
@@ -154,16 +159,15 @@ const EditTask = () => {
                         <button
                             // onClick={() => handleEditTask(editTask._id)}
                             className="btn btn-neutral text-white font-bold">
-                            Edit
+                            Complete 
                         </button>
                     </div>
 
                 </form>
 
             </div>
-
         </div>
     );
 };
 
-export default EditTask;
+export default CompleteTask;

@@ -16,6 +16,8 @@ import DashboardLayout from "../layout/DashboardLayout";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import EditTask from "../pages/EditTask/EditTask";
+import OnGoingTask from "../pages/OnGoingTask/OnGoingTask";
+import CompleteTask from "../pages/CompleteTask/CompleteTask";
 
 
 const router = createBrowserRouter([
@@ -76,6 +78,14 @@ const router = createBrowserRouter([
             {
                 path: "edit-task/:id",
                 element: <EditTask></EditTask>
+            },
+            {
+                path: "ongoing-task/:id",
+                element: <OnGoingTask></OnGoingTask>
+            },
+            {
+                path: "complete-task/:id",
+                element: <CompleteTask></CompleteTask>
             }
         ]
     },
