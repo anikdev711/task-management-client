@@ -1,6 +1,28 @@
-import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const Navbar = () => {
+
+    const location = useLocation();
+    const navigate = useNavigate();
+    const from = location.state?.from || '/'
+
+    const { user, userLogout } = useContext(AuthContext);
+    const handleLogout = () => {
+        userLogout()
+            .then(() => {
+                console.log('user logged out successfully');
+                navigate(from, {replace: true});
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
+
+
+
+
     const navLinks = <>
         <li><NavLink to="/">Home</NavLink></li>
         <li><NavLink to="/features">Features</NavLink></li>
@@ -28,7 +50,40 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <a className="btn">Login</a>
+                    {/* <a className="btn">Login</a> */}
+
+
+                    {
+                        user ? (
+                            <div className="dropdown dropdown-end">
+                                <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                                    <div className="w-10 rounded-full">
+                                        <img src={user?.photoURL ? user?.photoURL
+                                            : 'https://i.imgur.com/GgbSxBC.png'}
+                                        />
+                                    </div>
+                                </label>
+                                <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+                                    <li>
+                                        <p>{user?.displayName ? user?.displayName
+                                            : 'Anonymous/Reload'}</p>
+                                    </li>
+                                    
+                                    <li>
+                                        <button
+                                            onClick={handleLogout}
+                                            className="btn btn-secondary font-bold">
+                                            Logout
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                        )
+                            : (<Link to="/login">
+                                <button className="btn btn-secondary font-bold">Login</button>
+                            </Link>)
+                    }
+
                 </div>
             </div>
 
