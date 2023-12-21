@@ -13,6 +13,8 @@ import ToDoList from "../pages/ToDoList/ToDoList";
 import OnGoingList from "../pages/OnGoingList/OnGoingList";
 import CompletedList from "../pages/CompletedList/CompletedList";
 import DashboardLayout from "../layout/DashboardLayout";
+import Login from "../pages/Login/Login";
+import Register from "../pages/Register/Register";
 
 
 const router = createBrowserRouter([
@@ -32,6 +34,14 @@ const router = createBrowserRouter([
             path: "/contact",
             element: <ContactUs></ContactUs>
         },
+        {
+            path: "/login",
+            element: <Login></Login>
+        },
+        {
+            path: "/register",
+            element: <Register></Register>
+        }
       ]
     },
     {
