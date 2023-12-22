@@ -5,7 +5,7 @@ import MainLayout from "../layout/MainLayout";
 import Home from "../pages/Home/Home";
 import Features from "../pages/Features/Features";
 // import Dashboard from "../pages/Dashboard/Dashboard";
-import ContactUs from "../pages/Contact/ContactUs";
+// import ContactUs from "../pages/Contact/ContactUs";
 import UserProfile from "../pages/UserProfile/UserProfile";
 import CreateTasks from "../pages/CreateTasks/CreateTasks";
 import PreviousTasks from "../pages/PreviousTasks/PreviousTasks";
@@ -19,6 +19,7 @@ import EditTask from "../pages/EditTask/EditTask";
 import OnGoingTask from "../pages/OnGoingTask/OnGoingTask";
 import CompleteTask from "../pages/CompleteTask/CompleteTask";
 import PrivateRoute from "./PrivateRoute";
+import Pricing from "../pages/Pricing/Pricing";
 
 
 const router = createBrowserRouter([
@@ -35,8 +36,8 @@ const router = createBrowserRouter([
                 element: <Features></Features>
             },
             {
-                path: "/contact",
-                element: <ContactUs></ContactUs>
+                path: "/pricing",
+                element: <Pricing></Pricing>
             },
             {
                 path: "/login",
