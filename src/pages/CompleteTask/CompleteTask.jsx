@@ -10,7 +10,7 @@ const CompleteTask = () => {
     console.log(id);
 
     useEffect(() => {
-        axios.get('http://localhost:5000/tasks')
+        axios.get('https://task-management-server-jet.vercel.app/tasks')
             .then(res => {
                 const specificTask = res.data.find(task => task._id === id);
                 setEditTask(specificTask);
@@ -53,7 +53,7 @@ const CompleteTask = () => {
 
 
 
-        axios.post('http://localhost:5000/completetasks', taskInfo)
+        axios.post('https://task-management-server-jet.vercel.app/completetasks', taskInfo)
             .then(res => {
                 console.log(res);
                 if (res.data.insertedId) {

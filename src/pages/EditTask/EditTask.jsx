@@ -11,7 +11,7 @@ const EditTask = () => {
     console.log(id);
 
     useEffect(() => {
-        axios.get('http://localhost:5000/tasks')
+        axios.get('https://task-management-server-jet.vercel.app/tasks')
             .then(res => {
                 const specificTask = res.data.find(task => task._id === id);
                 setEditTask(specificTask);
@@ -48,7 +48,7 @@ const EditTask = () => {
             title
         }
 
-        axios.put(`http://localhost:5000/tasks/${id}`, taskInfo)
+        axios.put(`https://task-management-server-jet.vercel.app/tasks/${id}`, taskInfo)
             .then(res => {
                 console.log(res);
                 if (res.data.modifiedCount > 0) {

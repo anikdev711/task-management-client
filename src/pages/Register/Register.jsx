@@ -53,7 +53,7 @@ const Register = () => {
                         email,
                         createdAt: result.user.metadata.creationTime 
                     }
-                    fetch('http://localhost:5000/users', {
+                    fetch('https://task-management-server-jet.vercel.app/users', {
                         method: "POST",
                         headers: {
                             "content-type": "application/json"

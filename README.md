@@ -1,10 +1,10 @@
 Website Name: Task Management Website
 
-Website Live Link (Firebase): 
+Website Live Link (Firebase): https://task-management-auth-4059b.web.app/
 
-Alternative Live Link (Netlify): 
+Alternative Live Link (Netlify): https://658547c0e2582c9f68e19b7d--fanciful-arithmetic-d565b4.netlify.app/ 
 
-Server Live Link (Vercel, if requires): 
+Server Live Link (Vercel, if requires): https://task-management-server-jet.vercel.app/ 
 
 This website is implemented on the concept of task management. React, React Router, Node, Express, MongoDB, Firebase authentication tools and technologies are used to implement the task management website. The main features of this website are described below:
 

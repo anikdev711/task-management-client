@@ -11,7 +11,7 @@ const ToDoList = () => {
     const [toDoTasks, setToDoTasks] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:5000/tasks')
+        axios.get('https://task-management-server-jet.vercel.app/tasks')
             .then(res => {
                 const filteredTasks = res.data.filter(item => item.email === user?.email);
                 // console.log(filteredTasks);
@@ -35,7 +35,7 @@ const ToDoList = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                axios.delete(`http://localhost:5000/tasks/${id}`)
+                axios.delete(`https://task-management-server-jet.vercel.app/tasks/${id}`)
                     .then(res => {
                         if (res.data.deletedCount > 0) {
                             Swal.fire({

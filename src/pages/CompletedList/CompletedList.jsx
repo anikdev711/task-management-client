@@ -9,7 +9,7 @@ const CompletedList = () => {
     const [toDoTasks, setToDoTasks] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:5000/completetasks')
+        axios.get('https://task-management-server-jet.vercel.app/completetasks')
             .then(res => {
                 const filteredTasks = res.data.filter(item => item.email === user?.email);
                 // console.log(filteredTasks);

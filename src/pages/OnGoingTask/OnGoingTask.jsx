@@ -12,7 +12,7 @@ const OnGoingTask = () => {
     console.log(id);
 
     useEffect(() => {
-        axios.get('http://localhost:5000/tasks')
+        axios.get('https://task-management-server-jet.vercel.app/tasks')
             .then(res => {
                 const specificTask = res.data.find(task => task._id === id);
                 setEditTask(specificTask);
@@ -55,7 +55,7 @@ const OnGoingTask = () => {
 
         
 
-        axios.post('http://localhost:5000/ongoingtasks', taskInfo)
+        axios.post('https://task-management-server-jet.vercel.app/ongoingtasks', taskInfo)
             .then(res => {
                 console.log(res);
                 if (res.data.insertedId) {

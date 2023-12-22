@@ -22,7 +22,7 @@ const CreateTasks = () => {
             title: data.title
         }
 
-        axios.post('http://localhost:5000/tasks', taskInfo)
+        axios.post('https://task-management-server-jet.vercel.app/tasks', taskInfo)
             .then(res => {
                 console.log(res);
                 if (res.data.insertedId) {
